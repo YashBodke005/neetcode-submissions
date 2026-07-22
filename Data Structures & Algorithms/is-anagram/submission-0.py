@@ -1,0 +1,27 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+
+        if len(s)!= len(t):
+            return False
+
+        #return sorted(s)==sorted(t)
+        '''
+        cs, ct = {}, {}
+        for i in range(len(s)):
+            cs[s[i]] = 1+ cs.get(s[i],0)
+            ct[t[i]] = 1+ ct.get(t[i],0)
+
+        return cs==ct
+        '''
+        count = [0]*26
+        for i in range(len(s)):
+            count[ord(s[i])-ord('a')] +=1
+            count[ord(t[i])-ord('a')] -=1
+
+        for it in count:
+            if it !=0:
+                return False
+            
+        return True
+
+        
